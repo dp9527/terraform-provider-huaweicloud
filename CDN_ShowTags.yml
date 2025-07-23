@@ -1,0 +1,101 @@
+metadata:
+  title: 内容分发网络 - 查询资源标签列表配置接口
+  description: 华为云内容分发网络产品的查询资源标签列表配置接口接口详细信息
+  generated_at: '2025-07-22T15:12:53.695317'
+  generator: 华为云API分析MCP服务器
+  version: 1.0.0
+api:
+  product:
+    name: 内容分发网络
+    short: CDN
+  basic_info:
+    id: 32d38fe2194648128f12e7e2f2a54b4b
+    name: ShowTags
+    alias_name: ''
+    method: get
+    summary: 查询资源标签列表配置接口
+    tags: 域名配置
+    product_short: CDN
+    info_version: v2
+  detail:
+    id: 32d38fe2194648128f12e7e2f2a54b4b
+    name: ShowTags
+    summary: 查询资源标签列表配置接口
+    tags: 域名配置
+    product_short: CDN
+    region_id: cn-north-1
+    group_id: 13d7af7288504d108be6f92214593beb
+    paths:
+      /v1.0/cdn/configuration/tags:
+        get:
+          x-is-registered: Y
+          x-support-sdk: Y
+          tags:
+          - 域名配置
+          summary: 查询资源标签列表配置接口
+          description: 用于查询资源标签列表。
+          operationId: ShowTags
+          parameters:
+          - name: resource_id
+            in: query
+            description: "资源id。\n > 域名ID"
+            required: true
+            schema:
+              type: string
+          responses:
+            '200':
+              description: 请求成功。
+              headers:
+                X-Request-Id:
+                  schema:
+                    type: string
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ShowTagsResponseBody'
+                  example:
+                    tags: []
+          x-request-examples-url-1: GET https://cdn.myhuaweicloud.com/v1.0/cdn/configuration/tags
+    definitions: null
+    security_definitions: null
+    version: 3.0.1
+    components:
+      schemas:
+        ShowTagsResponseBody:
+          type: object
+          description: ShowTagsResponseBody
+          properties:
+            tags:
+              type: array
+              description: 标签列表
+              items:
+                $ref: '#/components/schemas/TagMap'
+        TagMap:
+          type: object
+          properties:
+            key:
+              type: string
+              description: '标签键。长度1-128个字符, 可用 UTF-8 格式表示的字母(包含中文)、数字和空格,以及以下字符: _
+                . : = + - @'
+              example: key
+              minLength: 1
+              maxLength: 128
+            value:
+              type: string
+              description: '标签值。长度0-255个字符,  可用 UTF-8 格式表示的字母(包含中文)、数字和空格,以及以下字符:
+                _ . : / = + - @'
+              example: value
+              minLength: 0
+              maxLength: 255
+          required:
+          - key
+    consumes: ''
+    parameters: null
+    schemes:
+    - HTTPS
+    host: cdn.myhuaweicloud.com
+    base_path: null
+    info_version: v2
+    description: null
+    method: get
+    uri: null
